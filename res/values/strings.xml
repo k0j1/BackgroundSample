@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">BackgroundSample</string>
+
+	<string-array name="ary_samples">
+		<item>sample1 oval</item>
+		<item>sample2 check</item>
+		<item>sample3 coloful oval</item>
+		<item>sample4 coloful rect</item>
+		<item>sample5</item>
+		<item>sample6</item>
+		<item>sample7</item>
+		<item>sample8</item>
+		<item>sample9</item>
+	</string-array>
+</resources>
