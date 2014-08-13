@@ -1,4 +1,4 @@
-                              package com.takaharabooks.sample;
+package com.takaharabooks.sample;
 
 import android.app.*;
 import android.content.*;
@@ -12,18 +12,23 @@ import java.util.*;
 
 public class MainActivity extends Activity
 {
-    static public final int KIND_NUM = 7;
+	static public final int KIND_NUM = 10;
     int m_nBackKind = 0;
 
-    /** Called when the activity is first created. */
+    /** Called when the activity is first crea"ted. */
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
+		//getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
+		//setTheme(android.R.style.Theme_Bla"|"|"|"|"|"|"|"|"|""|""|"|"||""|"|"|"|"|"|""ck_NoTitleBar);       //タイトルバー(アクションバー)なし
+		//setTheme(android.R.style.Theme.WithActionBar);        //アクションバーあり
         super.onCreate(savedInstanceState);
+		//setContentViewより前にWindowにActionBar表示を設定
+		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+		this.getActionBar();
+		
         setContentView(R.layout.main);
-		
 		SetBackground(0);
-		
 		ImageView csView = (ImageView) this.findViewById(R.id.backImageView);
 		csView.setOnClickListener(new OnClickListener()
 		{
@@ -41,9 +46,25 @@ public class MainActivity extends Activity
 	@Override
 	public boolean onCreateOptionMenu(Menu menu)
 	{
-		boolean ret = true;//super.onCreateOptionsMenu(menu);
-		menu.add(0,Menu.FIRST+1,0,"BLOG").setIcon(android.R.drawable.ic_dialog_info);
-        return super.onCreateOptionsMenu(menu);
+		//boolean ret = true;//super.onCreateOptionsMenu(menu);
+		//menu.add(0,Menu.FIRST+1,0,"BLOG").setIcon(android.R.drawable.ic_dialog_info);
+		// メニューの要素を追加
+		//menu.add("BLOG");
+
+		// メニューの要素を追加して取得
+		//MenuItem actionItem = menu.add("BLOG");
+
+		// SHOW_AS_ACTION_IF_ROOM:余裕があれば表示
+		//actionItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+		// アイコンを設定
+		//actionItem.setIcon(android.R.drawable.ic_dialog_info);
+		
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main_menu, menu);
+		
+        //return super.onCreateOptionsMenu(menu);
+		return true;
 	}
 	
 	@Override
@@ -86,7 +107,16 @@ public class MainActivity extends Activity
 			break;
 		case 6:
 			DrawBackground007(csBmpCanvas);
-			break;				
+			break;		
+		case 7:
+			DrawBackground008(csBmpCanvas);
+			break;
+		case 8:
+			DrawBackground009(csBmpCanvas);
+			break;
+		case 9:
+			DrawBackground010(csBmpCanvas);
+			break;
 		}
 		csView.setImageBitmap(csBmp);
 		
@@ -238,7 +268,85 @@ public class MainActivity extends Activity
 		}
 	}
 	
-	public void IntentBlog(){
+	public void DrawBackground008(Canvas csCanvas)
+	{
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		RectF sRect = new RectF();
+		for(int xy=320; xy>0; )
+		{
+			csPaint.setColor(Color.BLACK);
+			sRect.set(160-xy/2, 160-xy/2, 160+xy/2, 160+xy/2);
+			csCanvas.drawRect(sRect, csPaint);
+			xy/=Math.sqrt(2);
+			csCanvas.rotate(45, 160, 160);
+			csPaint.setColor(Color.WHITE);
+			sRect.set(160-xy/2, 160-xy/2, 160+xy/2, 160+xy/2);
+			csCanvas.drawRect(sRect, csPaint);
+			xy/=Math.sqrt(2);
+			csCanvas.rotate(45, 160, 160);
+		}
+	}
+	
+	public void DrawBackground009(Canvas csCanvas)
+	{
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		RectF sRect = new RectF();
+		for(int y=0; y<320; y+=80)
+		{
+			for(int x=0; x<320; x+=80)
+			{
+				int nRotate = 0;
+				for(int xy=80; xy>0; )
+				{
+					csPaint.setColor(Color.BLACK);
+					sRect.set(x+40-xy/2, y+40-xy/2, x+40+xy/2, y+40+xy/2);
+					csCanvas.drawRect(sRect, csPaint);
+					xy/=Math.sqrt(2);
+					csCanvas.rotate(45, x+40, y+40);
+					csPaint.setColor(Color.WHITE);
+					sRect.set(x+40-xy/2, y+40-xy/2, x+40+xy/2, y+40+xy/2);
+					csCanvas.drawRect(sRect, csPaint);
+					xy/=Math.sqrt(2);
+					csCanvas.rotate(45, x+40, y+40);
+					nRotate += 90;
+				}
+				csCanvas.rotate(-nRotate, x+40, y+40);
+			}
+		}
+	}
+	
+	public void DrawBackground010(Canvas csCanvas)
+	{
+		Random rand = new Random();
+
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+		
+		RectF sOval = new RectF();
+		for(int x=0; x<=320; x+=20)
+		{
+			for(int y=0; y<=320; y+=80)
+			{
+				int nX = rand.nextInt(320);
+				int nY = rand.nextInt(320);
+				int nSize = rand.nextInt(30)+10;
+				sOval.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawOval(sOval, csPaint);
+			}
+			int nX = rand.nextInt(320);
+			int nY = rand.nextInt(320);
+			int nSize = rand.nextInt(40);
+			csCanvas.drawLine(nX, nY, nX+nSize, nY+nSize, csPaint);
+			
+		}
+		
+	}
+	
+	public void IntentBlog()
+	{
 		Uri uri = Uri.parse("http://k0j1-android.blogspot.com/2013/10/blog-post_19.html");
 		Intent i = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(i);
