@@ -28,4 +28,5 @@ BackgroundSample
 詳細はブログで紹介していますので、こちらをご覧ください。
 
 <a href=http://k0j1-android.blogspot.com/2013/10/blog-post_19.html>【アプリ開発】背景の描画①</a>
+<a href=http://k0j1-android.blogspot.com/2014/08/blog-post.html>【アプリ開発】背景の描画②</a>
 
