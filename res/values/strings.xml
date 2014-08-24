@@ -7,15 +7,15 @@
 	<string-array name="ary_samples">
 		<item>sample1 oval</item>
 		<item>sample2 check</item>
-		<item>sample3 coloful oval</item>
-		<item>sample4 coloful rect</item>
-		<item>sample5</item>
-		<item>sample6</item>
-		<item>sample7</item>
-		<item>sample8</item>
-		<item>sample9</item>
-		<item>sample10 oval</item>
-		<item>sample11 check</item>
+		<item>sample3 colorful oval</item>
+		<item>sample4 colorful rect</item>
+		<item>sample5 pastel colorful rect and text</item>
+		<item>sample6 colorful rect and text</item>
+		<item>sample7 colorful check</item>
+		<item>sample8 rect</item>
+		<item>sample9 rect</item>
+		<item>sample10 one-color oval and line</item>
+		<item>sample11 two-color oval and line</item>
 		<item>sample12 coloful oval</item>
 		<item>sample13 coloful rect</item>
 		<item>sample14</item>

@@ -12,7 +12,7 @@ import java.util.*;
 
 public class MainActivity extends Activity
 {
-	static public final int KIND_NUM = 10;
+	static public final int KIND_NUM = 11;
     int m_nBackKind = 0;
 
     /** Called when the activity is first crea"ted. */
@@ -20,7 +20,7 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
 	{
 		//getWindow().requestFeature(Window.FEATURE_ACTION_MODE_OVERLAY);
-		//setTheme(android.R.style.Theme_Bla"|"|"|"|"|"|"|"|"|""|""|"|"||""|"|"|"|"|"|""ck_NoTitleBar);       //タイトルバー(アクションバー)なし
+		//setTheme(android.R.style.Theme_Black_NoTitleBar);       //タイトルバー(アクションバー)なし
 		//setTheme(android.R.style.Theme.WithActionBar);        //アクションバーあり
         super.onCreate(savedInstanceState);
 		//setContentViewより前にWindowにActionBar表示を設定
@@ -116,6 +116,9 @@ public class MainActivity extends Activity
 			break;
 		case 9:
 			DrawBackground010(csBmpCanvas);
+			break;
+		case 10:
+			DrawBackground011(csBmpCanvas);
 			break;
 		}
 		csView.setImageBitmap(csBmp);
@@ -345,6 +348,41 @@ public class MainActivity extends Activity
 		
 	}
 	
+	public void DrawBackground011(Canvas csCanvas)
+	{
+		Random rand = new Random();
+
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+
+		RectF sOval = new RectF();
+		for(int x=0; x<=320; x+=20)
+		{
+			if(x==160) csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+			for(int y=0; y<=320; y+=80)
+			{
+				int nX = 0, nY = 0;
+				boolean bLoop=true;
+				while(bLoop)
+				{
+					nX = rand.nextInt(320);
+					nY = rand.nextInt(320);
+					if(240 < Math.sqrt(nX*nX+nY*nY)) bLoop = false;
+				}
+				int nSize = rand.nextInt(30)+10;
+				sOval.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawOval(sOval, csPaint);
+			}
+			int nX = rand.nextInt(320);
+			int nY = rand.nextInt(320);
+			int nSize = rand.nextInt(40);
+			csCanvas.drawLine(nX, nY, nX+nSize, nY+nSize, csPaint);
+
+		}
+
+	}
+
 	public void IntentBlog()
 	{
 		Uri uri = Uri.parse("http://k0j1-android.blogspot.com/2013/10/blog-post_19.html");
