@@ -8,7 +8,7 @@ BackgroundSample
 背景パターン
 ================
 
-現時点で作成している背景は１０個あります。
+現時点で作成している背景は１４個あります。
 <ul>
 　<li>水玉模様(隙間少なめ、グラデーションあり)
 　<li>チェック柄(モノクロ)
@@ -20,6 +20,11 @@ BackgroundSample
 　<li>四角形の幾何学模様（モノクロ）
 　<li>多数の四角形の幾何学模様（モノクロ）
 　<li>多数の線と円の統一色の模様（１色、半透明）
+　<li>【雨あと】多数の線と円の模様（２色、半透明）
+　<li>【四角模様（左下）】多数の四角形をちりばめた模様（２色、半透明） 　
+　<li>【四角模様（左下）】多数の四角形をちりばめた模様（カラフル、半透明）
+　<li>【四角模様（真ん中）】多数の四角形をちりばめた模様（１色、半透明） 　
+　
 </ul>
 
 詳細
@@ -27,7 +32,8 @@ BackgroundSample
 
 詳細はブログで紹介していますので、こちらをご覧ください。
 
-<a href=http://k0j1-android.blogspot.com/2013/10/blog-post_19.html>【アプリ開発】背景の描画①</a>
+<a href=http://k0j1-android.blogspot.com/2013/10/blog-post_19.html>【アプリ開発】画像ファイルなしで背景画像を作る①</a>
 
-<a href=http://k0j1-android.blogspot.com/2014/08/blog-post.html>【アプリ開発】背景の描画②</a>
+<a href=http://k0j1-android.blogspot.com/2014/08/blog-post.html>【アプリ開発】画像ファイルなしで背景画像を作る②</a>
 
+<a href=http://k0j1-android.blogspot.jp/2014/09/blog-post.html>【アプリ開発】画像ファイルなしで背景画像を作る③</a>
