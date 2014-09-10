@@ -12,7 +12,7 @@ import java.util.*;
 
 public class MainActivity extends Activity
 {
-	static public final int KIND_NUM = 11;
+	static public final int KIND_NUM = 14;
     int m_nBackKind = 0;
 
     /** Called when the activity is first crea"ted. */
@@ -119,6 +119,15 @@ public class MainActivity extends Activity
 			break;
 		case 10:
 			DrawBackground011(csBmpCanvas);
+			break;
+		case 11:
+			DrawBackground012(csBmpCanvas);
+			break;
+		case 12:
+			DrawBackground013(csBmpCanvas);
+			break;
+		case 13:
+			DrawBackground014(csBmpCanvas);
 			break;
 		}
 		csView.setImageBitmap(csBmp);
@@ -383,6 +392,128 @@ public class MainActivity extends Activity
 
 	}
 
+	public void DrawBackground012(Canvas csCanvas)
+	{
+		Random rand = new Random();
+
+		int nColor01 = Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256));
+		int nColor02 = Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256));
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(nColor01);
+
+		RectF sRect = new RectF();
+		int x=20;
+		//for(; x<=320; x+=320)
+		{
+			for(int y=0; y<=320; y+=10)
+			{
+				csPaint.setColor(y%20==0 ? nColor01 : nColor02);
+				
+				int nX = 0, nY = 0;
+				nX = x + rand.nextInt(20);
+				nY = y;
+				
+				int nSize = rand.nextInt(20)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+
+		int y=280;
+		//for(; x<=320; x+=320)
+		{
+			for(x=0; x<=320; x+=10)
+			{
+				csPaint.setColor(x%20==0 ? nColor01 : nColor02);
+				
+				int nX = 0, nY = 0;
+				nX = x;
+				nY = y + rand.nextInt(20);
+
+				int nSize = rand.nextInt(20)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+
+	}
+
+	public void DrawBackground013(Canvas csCanvas)
+	{
+		Random rand = new Random();
+		csCanvas.rotate(45, 160, 160);
+
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+
+		RectF sRect = new RectF();
+		for(int x=0; x<=160; x+=20)
+		{
+			csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+			for(int y=0; y<=320; y+=30)
+			{
+				int nX = 0, nY = 0;
+				nX =   0 + x + rand.nextInt(90) - 90;
+				nY = 160 - x + rand.nextInt(90) - 90;
+
+				int nSize = rand.nextInt(30)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+
+		for(int x=0; x<=160; x+=20)
+		{
+			csPaint.setColor(Color.argb(128+rand.nextInt(80),rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+			for(int y=0; y<=320; y+=30)
+			{
+				int nX = 0, nY = 0;
+				nX = 160 + x - rand.nextInt(90) + 60;
+				nY = 320 - x - rand.nextInt(90) + 60;
+
+				int nSize = rand.nextInt(30)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+		
+	}
+	
+	public void DrawBackground014(Canvas csCanvas)
+	{
+		Random rand = new Random();
+		//csCanvas.rotate(45, 160, 160);
+
+		int nColorR = rand.nextInt(256);
+		int nColorG = rand.nextInt(256);
+		int nColorB = rand.nextInt(256);
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(Color.argb(128+rand.nextInt(80),nColorR,nColorG,nColorB));
+
+		RectF sRect = new RectF();
+		//for(int x=0; x<=160; x+=20)
+		{			
+			for(int y=0; y<=320; y+=5)
+			{
+				int nAddColor = rand.nextInt(50);
+				csPaint.setColor(Color.argb(50+rand.nextInt(150),nColorR+nAddColor,nColorG+nAddColor,nColorB+nAddColor));				
+				
+				int nX = 0, nY = 0;
+				nX = 20 + rand.nextInt(240);
+				nY = y + rand.nextInt(20);
+
+				int nSize = rand.nextInt(60)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+
+	}
+
+	
 	public void IntentBlog()
 	{
 		Uri uri = Uri.parse("http://k0j1-android.blogspot.com/2013/10/blog-post_19.html");
