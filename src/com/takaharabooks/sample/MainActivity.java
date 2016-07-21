@@ -12,7 +12,7 @@ import java.util.*;
 
 public class MainActivity extends Activity
 {
-	static public final int KIND_NUM = 14;
+	static public final int KIND_NUM = 15;
     int m_nBackKind = 0;
 
     /** Called when the activity is first crea"ted. */
@@ -44,7 +44,7 @@ public class MainActivity extends Activity
     }
 	
 	@Override
-	public boolean onCreateOptionMenu(Menu menu)
+	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		//boolean ret = true;//super.onCreateOptionsMenu(menu);
 		//menu.add(0,Menu.FIRST+1,0,"BLOG").setIcon(android.R.drawable.ic_dialog_info);
@@ -128,6 +128,9 @@ public class MainActivity extends Activity
 			break;
 		case 13:
 			DrawBackground014(csBmpCanvas);
+			break;
+		case 14:
+			DrawBackground015(csBmpCanvas);
 			break;
 		}
 		csView.setImageBitmap(csBmp);
@@ -513,7 +516,38 @@ public class MainActivity extends Activity
 
 	}
 
-	
+	public void DrawBackground015(Canvas csCanvas)
+	{
+		Random rand = new Random();
+		//csCanvas.rotate(45, 160, 160);
+
+		int nColorR = rand.nextInt(256);
+		int nColorG = rand.nextInt(256);
+		int nColorB = rand.nextInt(256);
+		Paint csPaint = new Paint();
+		csPaint.setAntiAlias(true);
+		csPaint.setColor(Color.argb(128+rand.nextInt(80),nColorR,nColorG,nColorB));
+
+		RectF sRect = new RectF();
+		//for(int x=0; x<=160; x+=20)
+		{
+			for(int y=0; y<=320; y+=5)
+			{
+				int nAddColor = rand.nextInt(50);
+				csPaint.setColor(Color.argb(50+rand.nextInt(150),nColorR+nAddColor,nColorG+nAddColor,nColorB+nAddColor));
+
+				int nX = 0, nY = 0;
+				nX = 20 + rand.nextInt(240);
+				nY = y + rand.nextInt(20);
+
+				int nSize = rand.nextInt(60)+2;
+				sRect.set(nX, nY, nX+nSize, nY+nSize);
+				csCanvas.drawRect(sRect, csPaint);
+			}
+		}
+
+	}
+
 	public void IntentBlog()
 	{
 		Uri uri = Uri.parse("http://k0j1-android.blogspot.com/2013/10/blog-post_19.html");
